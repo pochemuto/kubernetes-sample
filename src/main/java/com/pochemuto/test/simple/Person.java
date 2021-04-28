@@ -1,14 +1,13 @@
 package com.pochemuto.test.simple;
 
-import java.lang.annotation.Documented;
+import java.time.Instant;
 
-import lombok.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Value
 @Document(collection = "test")
-public class Person {
-    @Id
-    String name;
+public record Person(
+        @Id String id,
+        Instant updated
+) {
 }
