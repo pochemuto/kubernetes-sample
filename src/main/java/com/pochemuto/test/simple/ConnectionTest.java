@@ -23,5 +23,10 @@ public class ConnectionTest implements ApplicationRunner {
         var person = new Person(faker.funnyName().name(), Instant.now());
         repository.save(person);
         log.info("added {}", person.id());
+
+        if (System.getenv().containsKey("RUN_ONCE")) {
+            log.info("RUN_ONE set, terminating...");
+            System.exit(0);
+        }
     }
 }
