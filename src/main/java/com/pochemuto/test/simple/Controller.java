@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     private final TestRepository repository;
 
+    @GetMapping("ping")
+    public String ping() {
+        return System.getenv("HOSTNAME");
+    }
+
     @GetMapping({"add/{name}", "add"})
     public String add(@PathVariable(required = false) Optional<String> name) {
         var person = new Person(name.orElse("nobody"), Instant.now());

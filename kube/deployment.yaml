@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: simple-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: simple-app
@@ -27,6 +27,10 @@ spec:
     spec:
       containers:
         - name: simple-app
-          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v2
+          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v3
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
