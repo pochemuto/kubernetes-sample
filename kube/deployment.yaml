@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         name: simple-app
+        app: simple
     spec:
       containers:
         - name: simple-app
