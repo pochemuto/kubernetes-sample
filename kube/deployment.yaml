@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-app
+spec:
+  selector:
+    name: simple-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,4 +30,3 @@ spec:
           image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v2
           ports:
             - containerPort: 8080
-      restartPolicy: Always
