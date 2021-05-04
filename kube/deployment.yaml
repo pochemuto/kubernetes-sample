@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: simple-app
 spec:
-  type: LoadBalancer
   selector:
     name: simple-app
   ports:
@@ -17,7 +16,7 @@ kind: Deployment
 metadata:
   name: simple-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       name: simple-app
@@ -29,7 +28,7 @@ spec:
     spec:
       containers:
         - name: simple-app
-          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v3
+          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v6
           ports:
             - containerPort: 8080
           readinessProbe:

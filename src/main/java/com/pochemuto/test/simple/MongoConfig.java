@@ -1,6 +1,7 @@
 package com.pochemuto.test.simple;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoCredential;
@@ -17,11 +18,11 @@ public class MongoConfig {
         return MongoClients.create(
                 MongoClientSettings.builder()
                         .applyToClusterSettings(builder ->
-                                builder.hosts(List.of(
-                                        new ServerAddress("rc1b-wuaj5x303k5431f7.mdb.yandexcloud.net", 27018)
-                                )))
-                        .applyToSslSettings(builder ->
-                                builder.enabled(true))
+                                builder.hosts(List.of(new ServerAddress("mongo", 27018)))
+                                .requiredReplicaSetName("rs01")
+                        )
+                        .applyToConnectionPoolSettings(builder ->
+                                builder.maxConnectionIdleTime(5000, TimeUnit.MILLISECONDS))
                         .credential(MongoCredential.createCredential("user", "main",
                                 "demon-funk-bittern".toCharArray()))
                         .build()
