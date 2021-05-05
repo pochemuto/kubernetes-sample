@@ -1,5 +1,9 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://user:demon-funk-bittern@mongo:27018/?replicaSet=rs01&authSource=main
       database: main
+      username: user
+      password: demon-funk-bittern
+      host: mongo
+      port: 27018
+      replica-set-name: rs01
