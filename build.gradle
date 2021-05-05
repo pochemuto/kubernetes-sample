@@ -7,6 +7,7 @@ plugins {
 group = 'com.pochemuto.test'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '16'
+ext['mongodb.version']='3.12.8'
 
 configurations {
 	compileOnly {
