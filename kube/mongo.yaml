@@ -4,4 +4,4 @@ metadata:
   name: mongo
 spec:
   type: ExternalName
-  externalName: rc1b-wuaj5x303k5431f7.mdb.yandexcloud.net
+  externalName: rc1b-sqbh61emon5fy3wy.mdb.yandexcloud.net
