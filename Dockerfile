@@ -2,9 +2,10 @@ FROM adoptopenjdk/openjdk16:alpine AS build
 WORKDIR workspace
 
 COPY gradle gradle
-COPY build.gradle .
 COPY settings.gradle .
 COPY gradlew .
+RUN ./gradlew
+COPY build.gradle .
 RUN ./gradlew dependencies --refresh-dependencies
 COPY src src
 
