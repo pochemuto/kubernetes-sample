@@ -8,9 +8,18 @@ spec:
   tls:
   - hosts:
     - aurora.pochemuto.com
+    - homealone.pochemuto.com
     secretName: aurora-letsencrypt-prod
   rules:
   - host: aurora.pochemuto.com
+    http:
+      paths: 
+      - path: "/"
+        pathType: Prefix
+        backend:
+          serviceName: simple-app
+          servicePort: 80
+  - host: homealone.pochemuto.com
     http:
       paths: 
       - path: "/"
