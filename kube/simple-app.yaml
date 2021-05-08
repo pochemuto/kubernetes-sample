@@ -28,10 +28,20 @@ spec:
     spec:
       containers:
         - name: simple-app
-          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v27
+          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v28
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: stable
+            - name: SPRING_DATA_MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: username
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: password
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -49,6 +59,9 @@ spec:
             items:
               - key: properties
                 path: application-stable.yaml
+        - name: mongo
+          secret:
+            secretName: mongo
 
 ---
 apiVersion: v1

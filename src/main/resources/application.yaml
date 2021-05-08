@@ -1,9 +1,3 @@
-spring:
-  data:
-    mongodb:
-      username: user
-      password: demon-funk-bittern
-
 logging:
   level:
     com.pochemuto: DEBUG
