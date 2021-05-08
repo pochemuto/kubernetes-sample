@@ -34,7 +34,11 @@ jobs:
     needs: build
 
     steps:
-    - uses: azure/k8s-set-context@v1
+    - name: Checkout Repo
+      uses: actions/checkout@v
+
+    - name: Set context
+      uses: azure/k8s-set-context@v1
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
