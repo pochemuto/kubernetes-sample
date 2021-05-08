@@ -39,7 +39,6 @@ jobs:
 
     - run: wget https://storage.yandexcloud.net/yandexcloud-yc/install.sh && chmod +x install.sh && ./install.sh -i /home/runner/yandex-cloud
     - run: echo '${{ secrets.YC_SERVICE_ACCOUNT_KEY }}' > key.json
-    - run: ls -l /home/runner/yandex-cloud/bin/yc
     - run: /home/runner/yandex-cloud/bin/yc config set service-account-key key.json
 
     - name: Set context
