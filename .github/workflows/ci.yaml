@@ -16,5 +16,4 @@ jobs:
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBECONFIG }}
-        context: stable
       id: setcontext
