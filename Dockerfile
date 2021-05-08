@@ -17,11 +17,6 @@ FROM adoptopenjdk/openjdk16:alpine
 RUN cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" >  /etc/timezone
 
-ARG CERT=YandexInternalRootCA.crt
-COPY $CERT .
-RUN keytool -importcert -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt -file $CERT \
-    && rm $CERT
-
 COPY --from=build workspace/dependencies/ .
 COPY --from=build workspace/snapshot-dependencies/ .
 # allow empty snapshot dependencies
