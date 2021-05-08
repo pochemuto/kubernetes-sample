@@ -20,7 +20,7 @@ public class Controller {
 
     @GetMapping("ping")
     public String ping() {
-        return "Host: " + System.getenv("HOSTNAME");
+        return "Hello, Nastya";
     }
 
     @GetMapping({"add/{name}", "add"})
