@@ -1,9 +1,9 @@
 spring:
   data:
     mongodb:
-      database: main
       username: user
       password: demon-funk-bittern
-      host: mongo
-      port: 27018
-      replica-set-name: rs01
+
+logging:
+  level:
+    com.pochemuto: DEBUG
