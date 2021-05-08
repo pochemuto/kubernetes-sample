@@ -14,7 +14,7 @@ jobs:
         - name: Checkout Repo
           uses: actions/checkout@v2
         - name: Build the tagged Docker image
-          run: docker build -t ${{ secret.REGISTRY }}/simple:${{ github.sha }} .
+          run: docker build -t ${{ secrets.REGISTRY }}/simple:${{ github.sha }} .
   
   push_docker_image:
     name: Push Docker Image
