@@ -25,6 +25,8 @@ RUN keytool -importcert -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts 
 
 COPY --from=build workspace/dependencies/ .
 COPY --from=build workspace/snapshot-dependencies/ .
+# allow empty snapshot dependencies
+RUN true
 COPY --from=build workspace/spring-boot-loader/ .
 COPY --from=build workspace/application/ .
 
