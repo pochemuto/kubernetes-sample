@@ -37,17 +37,16 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v2
 
-    - run: wget https://storage.yandexcloud.net/yandexcloud-yc/install.sh && chmod +x install.sh && ./install.sh && export PATH
+    - run: wget https://storage.yandexcloud.net/yandexcloud-yc/install.sh && chmod +x install.sh && ./install.sh -i /home/runner/yandex-cloud
     - run: echo '${{ secrets.YC_SERVICE_ACCOUNT_KEY }}' > key.json
-    - run: yc config set service-account-key key.json
-    - run: type yc
+    - run: ls -l /home/runner/yandex-cloud/bin/yc
+    - run: /home/runner/yandex-cloud/bin/yc config set service-account-key key.json
 
     - name: Set context
       uses: azure/k8s-set-context@v1
       with:
-        method: service-account
-        k8s-url: https://84.252.142.144
-        k8s-secret: ${{ secrets.K8S_SECRET }}
+        method: kubeconfig
+        kubeconfig: '${{ secrets.KUBE_CONFIG }}'
       id: setcontext
 
     - run: cat $KUBECONFIG
