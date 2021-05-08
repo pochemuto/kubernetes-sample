@@ -1,0 +1,20 @@
+name: Deploy to aurora
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: azure/k8s-set-context@v1
+      with:
+        method: kubeconfig
+        kubeconfig: {{ secrets.KUBECONFIG }}
+        context: stable
+      id: setcontext
