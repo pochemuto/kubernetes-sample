@@ -14,8 +14,7 @@ RUN java -Djarmode=layertools -jar build/libs/*.jar extract
 
 FROM adoptopenjdk/openjdk16:alpine
 
-RUN apk add --no-cache tzdata \
-    && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
+RUN cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" >  /etc/timezone
 
 ARG CERT=YandexInternalRootCA.crt
