@@ -7,8 +7,29 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  build_docker_image:
+      name: Build Docker Image
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v2
+        - name: Build the tagged Docker image
+          run: docker build -t ${{ secret.REGISTRY }}/simple:${{ github.sha }} .
+  
+  push_docker_image:
+    name: Push Docker Image
+    needs: build_docker_image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          username: oauth
+          password: ${{ secrets.REGISTRY_TOKEN }}
+          registry: cr.yandex
+          repository: ${{ secrets.REGISTRY }}/simple:${{ github.sha }}
+          
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
