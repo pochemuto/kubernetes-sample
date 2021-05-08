@@ -39,3 +39,8 @@ jobs:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
       id: setcontext
+
+    - uses: Azure/k8s-deploy@v1.4
+      with:
+        manifests: kube/simple-app.yaml
+        images: '${{ secrets.REGISTRY }}/simple:${{ github.sha }}'

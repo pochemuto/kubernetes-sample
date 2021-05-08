@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: simple-app
-          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple:v28
+          image: cr.yandex/crp4g65pbp8qf4mtcos7/simple
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: stable
