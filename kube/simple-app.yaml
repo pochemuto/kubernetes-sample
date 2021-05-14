@@ -89,7 +89,7 @@ spec:
   tls:
     - hosts:
         - homealone.pochemuto.com
-      secretName: aurora-letsencrypt-prod
+      secretName: homealone-letsencrypt-prod
   rules:
     - host: homealone.pochemuto.com
       http:
