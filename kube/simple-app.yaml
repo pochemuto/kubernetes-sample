@@ -88,10 +88,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - homealone.pochemuto.com
-      secretName: homealone-letsencrypt-prod
+        - simple.aurora.pochemuto.com
+      secretName: simple-letsencrypt-prod
   rules:
-    - host: homealone.pochemuto.com
+    - host: simple.aurora.pochemuto.com
       http:
         paths:
           - path: "/"
