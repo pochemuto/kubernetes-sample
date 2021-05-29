@@ -26,7 +26,7 @@ public class Controller {
     @GetMapping({"add/{name}", "add"})
     public String add(@PathVariable(required = false) Optional<String> name) {
         log.info("Got name: " + name);
-        var person = new Person(name.orElse("nobody"), Instant.now());
+        var person = new Person(name.orElse("unknown"), Instant.now());
         repository.save(person);
         return person.id() + " was added at " + person.updated();
     }
